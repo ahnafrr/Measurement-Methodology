@@ -1,26 +1,13 @@
-"""Step 3 - Similarity score R(tool, phase) against manual ground truth.
-
-A tool is compared against manual ground truth for ONE same scenario.
-Directory structure: each tool/scenario has its own flow and sum files,
-so the script accepts tool and manual file paths separately.
-
+"""
 Usage:
   python3 scoring.py \
-      --tool-flows "A.csv" "B.csv" "C.csv" "D.csv" "E.csv" \
-      --tool-sum "A_sum.csv" "B_sum.csv" "C_sum.csv" "D_sum.csv" "E_sum.csv" \
-      --manual-flows "output_all_flows.csv" \
-      --manual-sum "output_all_summary.csv" \
+      --tool-flows "C:\Tugas Akhir\Metasploit#\Ransomware\T1\output_keep_flows.csv" \
+      --tool-sum "C:\Tugas Akhir\Metasploit#\Ransomware\T1\output_keep_summary.csv" \
+      --manual-flows "C:\Tugas Akhir\Metasploit#\Ransomware\T2\output_keep_flows.csv" "C:\Tugas Akhir\Metasploit#\Ransomware\T3\output_keep_flows.csv" "C:\Tugas Akhir\Metasploit#\Ransomware\T4\output_keep_flows.csv"\
+      --manual-sum "C:\Tugas Akhir\Metasploit#\Ransomware\T2\output_keep_summary.csv" "C:\Tugas Akhir\Metasploit#\Ransomware\T3\output_keep_summary.csv" "C:\Tugas Akhir\Metasploit#\Ransomware\T4\output_keep_summary.csv"\
       --metric wasserstein \
-      --out R_all.csv
+      --out R_T1.csv
 
-Comparison is done per phase (phase column). Tool phases absent from manual
-are flagged, not forced.
-
-Feature groups:
-  R_pktlen      : mean_ps per flow (3 directions)  -> distribution
-  R_timing      : mean_piat_ms, cv_piat per flow   -> distribution
-  R_periodicity : gap_dom_median_s, gap_dom_robust_cv (bucket scalar)
-R_combined = average of available feature groups.
 """
 import argparse
 import numpy as np
