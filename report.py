@@ -34,9 +34,9 @@ def heatmap(piv, hatch, path, label):
                 v = piv.values[i, j]
                 ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=9,
                         color="white" if v < 0.18 else "black")
-    ax.set_title(f"R(tool, phase) against manual - {label}", fontsize=11)
-    ax.text(0.5, -0.32, "hatched n/a = phase absent from ground truth (cannot be scored)",
-            transform=ax.transAxes, ha="center", fontsize=7.5, color="dimgray")
+    ax.set_title(f"R(tool, phase) against manual", fontsize=11)
+    ax.text(0.5, -0.15, "hatched n/a = phase absent from ground truth (cannot be scored) \n 0.00 = phase not executed by the tool, not zero similarity",
+            transform=ax.transAxes, ha="center", fontsize=11, color="black")
     fig.colorbar(im, ax=ax, label="similarity (1 = like manual)", shrink=.8)
     fig.tight_layout()
     fig.savefig(path, dpi=200, bbox_inches="tight")
